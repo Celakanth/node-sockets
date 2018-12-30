@@ -435,5 +435,19 @@ $('#action_menu_btn').click(function(){
 });
 	});
 </script>
+
+<script src="socket.io/socket.io.js"></script>
+<script>
+  var socket = io();
+
+  socket.on('connect', () => {
+    alert('connect to server');
+  });
+
+  socket.on('disconnect', () => {
+    alert('Disconnected from server');
+  })
+</script>
+
 </body>
 </html>
