@@ -18,8 +18,7 @@ function sendMessage(){
   if (SendToId != '') {
     socket.emit('createMessage',{
         messageText: TheMessage,
-        fromChaterId: SendToId,
-        createdAt: new Date().getDate()
+        SendChaterId: SendToId
       }
     );
     $('#message').val('');
