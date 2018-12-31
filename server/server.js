@@ -52,8 +52,13 @@ io.on('connection', (socket) => {
       });*/
   });
 
+  socket.on('sendMyLocation', (location, callback) => {
+    io.emit('newChatMessage', generateMessage(102201, `Christian is at latitude ${location.latitude} and longitude ${location.longitude}`));
+  });
 
-})
+
+});
+
 
 server.listen(port, () =>{
   console.log(`Server is running on port ${port}`);

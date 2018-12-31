@@ -57,3 +57,19 @@ $('#message-form').on('submit', function(e){
 
   sendMessage();
 });
+
+var locationButton = $('#send-location');
+
+locationButton.on('click', function(){
+  if(!navigator.geolocation){
+    return alet('Geolocation not supported by your browser');
+  }
+  navigator.geolocation.getCurrentPosition(function (position){
+    socket.emit('sendMyLocation', {
+      latitude: position.coords.latitude,
+      longitude: position.coords.longitude
+    })
+  }, function(){
+    return alert('Unable to featch your location');
+  })
+});

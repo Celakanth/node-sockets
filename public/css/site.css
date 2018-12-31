@@ -77,6 +77,19 @@ body,html{
   cursor: pointer;
 }
 
+.sendloc{
+  border-radius: 15px 15px 15px 15px !important;
+  background-color: rgba(0,0,0,0.3) !important;
+  border: 0 !important;
+  color: white !important;
+  cursor: pointer;
+  text-align: left;
+  width: 25%;
+  margin: 17px;
+  height: 80px;
+  padding-left: 10px;
+}
+
 .txt_fields{
   border-radius: 15px 15px 15px 15px !important;
   background-color: rgba(0,0,0,0.3) !important;
