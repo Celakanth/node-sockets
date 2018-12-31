@@ -10,7 +10,7 @@ const http = require('http');
 const express = require('express');
 const socketIO = require('socket.io')
 
-const messageData = require('./utils/message');
+const {generateMessage} = require('./utils/message');
 
 const port = process.env.PORT || 3000;
 const publicPath = path.join(__dirname, '../public');
@@ -25,19 +25,9 @@ app.use(express.static(publicPath));
 io.on('connection', (socket) => {
   console.log('New connection');
 
-  socket.emit('newChatMessage', {
-    messageImage: 'New User Image',
-    messageText: 'Welcome to the new user',
-    fromChaterId: 10220,
-    messageCreatedAt: new Date().getTime()
-  });
+  socket.emit('newChatMessage',  generateMessage(10221,'Welcome new user'));
 
-  socket.broadcast.emit('newChatMessage',{
-    messageImage: 'New User Image',
-    messageText: 'New user has joind the message',
-    fromChaterId: 10220,
-    messageCreatedAt: new Date().getTime()
-  });
+  socket.broadcast.emit('newChatMessage',generateMessage(10220,'New user has joind the message'));
 
   //Disconnected from server -on = event, -socket is the io socket object
 
