@@ -76,6 +76,18 @@ body,html{
   color: white !important;
   cursor: pointer;
 }
+
+.txt_fields{
+  border-radius: 15px 15px 15px 15px !important;
+  background-color: rgba(0,0,0,0.3) !important;
+  border: 0 !important;
+  color: white !important;
+  margin-bottom: 5px;
+  width: 100%;
+  padding-left: 10px;
+  height: 40px;
+}
+
 .contacts{
   list-style: none;
   padding: 0;
