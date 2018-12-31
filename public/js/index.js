@@ -2,15 +2,17 @@ var socket = io();
 
 socket.on('connect', function(){
   console.log('connect to server');
+  $('#serverMessage').html('Your messanger is connected');
 });
 
 socket.on('disconnect', function(){
   console.log('Disconnected from server');
+  $('#serverMessage').html('Your messanger is disconnect');
 });
 
 socket.on('newChatMessage', function(message){
   //console.log('New chat message has arrived', message);
-  var li = $(`<li class="d-flex justify-content-end mb-4"><div class="msg_cotainer_send">${message.messageText}<span class="msg_time_send">${message.messageCreatedAt}</span></div><div class="img_cont_msg"><img src=${message.messageImage}</div></li>`);
+  var li = $(`<li class="d-flex justify-content-end mb-4"><div class="msg_cotainer_send">${message.messageText}<span class="msg_time_send">${message.messageCreatedAt}</span></div><div class="img_cont_msg"><img src='${message.messageImage}' /></div></li>`);
   $('#messageList').append(li);
 });
 
@@ -22,7 +24,6 @@ function sendMessage(){
         messageText: TheMessage,
         SendChaterId: SendToId
       }, function(messageData){
-          console.log('Got the message');
           $('#serverMessage').html(messageData);
       });
     $('#message').val('');
