@@ -6,7 +6,7 @@
 var generateMessage = (fromid, text) => {
   var TheSender = 'Christian';
   return {
-    messageImage: 'New User Image',
+    messageImage: 'New_User_Image',
     messageText: text,
     fromChaterId: fromid,
     messageFrom: TheSender,

@@ -9,7 +9,9 @@ socket.on('disconnect', function(){
 });
 
 socket.on('newChatMessage', function(message){
-  console.log('New chat message has arrived', message);
+  //console.log('New chat message has arrived', message);
+  var li = $(`<li class="d-flex justify-content-end mb-4"><div class="msg_cotainer_send">${message.messageText}<span class="msg_time_send">${message.messageCreatedAt}</span></div><div class="img_cont_msg"><img src=${message.messageImage}</div></li>`);
+  $('#messageList').append(li);
 });
 
 function sendMessage(){
@@ -47,4 +49,10 @@ $(document).ready(function(){
     $('#action_menu_btn').click(function(){
     $('.action_menu').toggle();
   });
+});
+
+$('#message-form').on('submit', function(e){
+  e.preventDefault();
+
+  sendMessage();
 });
