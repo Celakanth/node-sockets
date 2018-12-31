@@ -19,8 +19,10 @@ function sendMessage(){
     socket.emit('createMessage',{
         messageText: TheMessage,
         SendChaterId: SendToId
-      }
-    );
+      }, function(messageData){
+          console.log('Got the message');
+          $('#serverMessage').html(messageData);
+      });
     $('#message').val('');
       $('#serverMessage').html('');
   }
