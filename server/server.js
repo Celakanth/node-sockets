@@ -10,7 +10,7 @@ const http = require('http');
 const express = require('express');
 const socketIO = require('socket.io')
 
-const {generateMessage} = require('./utils/message');
+const {generateMessage, generateLocationMessage} = require('./utils/message');
 
 const port = process.env.PORT || 3000;
 const publicPath = path.join(__dirname, '../public');
@@ -25,7 +25,7 @@ app.use(express.static(publicPath));
 io.on('connection', (socket) => {
   console.log('New connection');
 
-  socket.emit('newChatMessage',  generateMessage(10221,'Welcome new user'));
+  socket.emit('newChatMessage',generateMessage(10221,'Welcome new user'));
 
   socket.broadcast.emit('newChatMessage',generateMessage(10220,'New user has joind the message'));
 
@@ -53,10 +53,8 @@ io.on('connection', (socket) => {
   });
 
   socket.on('sendMyLocation', (location, callback) => {
-    io.emit('newChatMessage', generateMessage(102201, `Christian is at latitude ${location.latitude} and longitude ${location.longitude}`));
+    io.emit('newLocationMessage', generateLocationMessage(102201, location.latitude, location.longitude));
   });
-
-
 });
 
 

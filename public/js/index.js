@@ -16,6 +16,22 @@ socket.on('newChatMessage', function(message){
   $('#messageList').append(li);
 });
 
+socket.on('newLocationMessage', function(message){
+  var li = $(`<li class="d-flex justify-content-end mb-4"><div class="msg_cotainer_send"><a id='theTarget' href='/' data-toggle="modal" data-target="#myModal">I am here </a><span class="msg_time_send">${message.messageCreatedAt}</span></div><div class="img_cont_msg"><img src='${message.messageImage}' /></div></li>`);
+  $('#messageList').append(li);
+
+  $('#theTarget').on('click', function () {
+    alert('Hello');
+    var map = new google.maps.Map(document.getElementById("map_div"), {
+      center: new google.maps.LatLng(message.latitude,message.longitude),
+      zoom:18
+    });
+      google.maps.event.trigger(map, "resize");
+  });
+
+});
+
+
 function sendMessage(){
   var SendToId = $('#chatterId').val()
   var TheMessage = $('#message').val();

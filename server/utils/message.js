@@ -12,6 +12,18 @@ var generateMessage = (fromid, text) => {
     messageFrom: TheSender,
     messageCreatedAt: new Date().getTime()
   };
-}
+};
 
-module.exports = {generateMessage};
+var generateLocationMessage = (fromId, latitude, longitude) => {
+  var TheSender = 'Christian';
+  return {
+    messageImage: 'New_user_image',
+    latitude,
+    longitude,
+    fromChaterId: fromId,
+    messageFrom: TheSender,
+    messageCreatedAt: new Date().getTime()
+  };
+};
+
+module.exports = {generateMessage, generateLocationMessage};

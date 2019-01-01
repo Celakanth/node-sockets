@@ -90,6 +90,10 @@ body,html{
   padding-left: 10px;
 }
 
+.modal-body{
+  height:450px;
+}
+
 .txt_fields{
   border-radius: 15px 15px 15px 15px !important;
   background-color: rgba(0,0,0,0.3) !important;

@@ -14,10 +14,33 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVl46TxYm5kAqL9nbNEwlUKN--9hIvqL4&sensor=false" type="text/javascript"></script>
     <link rel=icon href=/chat.png>
 </head>
 <body>
     <input type="hidden" id="chatterId"/>
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">My Location</h4>
+          </div>
+          <div style="height:500px;">
+            <div id='map_div' class="modal-body">
+
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
 		<div class="container-fluid h-100">
 			<div class="row justify-content-center h-100">
 				<div class="col-md-4 col-xl-3 chat"><div class="card mb-sm-3 mb-md-0 contacts_card">
@@ -211,6 +234,7 @@
 				</div>
 			</div>
 		</div>
+
 <script src="socket.io/socket.io.js"></script>
 <script src="/js/index.js"></script>
 <!--
