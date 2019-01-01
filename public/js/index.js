@@ -44,7 +44,8 @@ scroll();
 function sendMessage(){
   var SendToId = $('#chatterId').val()
   var TheMessage = $('#message').val();
-  if (SendToId != '') {
+
+  if (SendToId != '' && TheMessage !=  '') {
     socket.emit('createMessage',{
         messageText: TheMessage,
         SendChaterId: SendToId
@@ -55,7 +56,7 @@ function sendMessage(){
       $('#serverMessage').html('');
   }
   else{
-    $('#serverMessage').html('No recipient selected');
+    $('#serverMessage').html('No recipient selected or no message entered');
   };
   scroll();
 }
@@ -106,7 +107,15 @@ locationButton.on('click', function(){
 });
 
 function scroll(){
-  var wtf    = $('#messageList');
-  var height = wtf[0].scrollHeight;
-  wtf.scrollTop(height);
-}
+  var wtf = $('#messageList');
+  var newMessage = wtf.children('li:last-child')
+  var scrollHeight = wtf[0].scrollHeight;
+  var clientHeight = wtf[0].clientHeight;
+  var scrollTop = wtf[0].scrollTop;
+  var messageHeight = newMessage.innerHeight();
+  var lastMessageHeight = newMessage.prev().innerHeight();
+
+  if (clientHeight + scrollTop + messageHeight + lastMessageHeight >= scrollHeight) {
+      wtf.scrollTop(scrollHeight);
+  };
+};
