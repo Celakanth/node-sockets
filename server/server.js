@@ -8,7 +8,8 @@
 const path = require('path');
 const http = require('http');
 const express = require('express');
-const socketIO = require('socket.io')
+const socketIO = require('socket.io');
+const moment = require('moment');
 
 const {generateMessage, generateLocationMessage} = require('./utils/message');
 

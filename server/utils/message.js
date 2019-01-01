@@ -2,6 +2,7 @@
   message.js
   message data structure file
 */
+const moment = require('moment');
 
 var generateMessage = (fromid, text) => {
   var TheSender = 'Christian';
@@ -10,7 +11,7 @@ var generateMessage = (fromid, text) => {
     messageText: text,
     fromChaterId: fromid,
     messageFrom: TheSender,
-    messageCreatedAt: new Date().getTime()
+    messageCreatedAt: moment().calendar()
   };
 };
 
@@ -22,7 +23,7 @@ var generateLocationMessage = (fromId, latitude, longitude) => {
     longitude,
     fromChaterId: fromId,
     messageFrom: TheSender,
-    messageCreatedAt: new Date().getTime()
+    messageCreatedAt: moment().calendar()
   };
 };
 

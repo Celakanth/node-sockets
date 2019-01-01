@@ -81,12 +81,17 @@ locationButton.on('click', function(){
   if(!navigator.geolocation){
     return alet('Geolocation not supported by your browser');
   }
+
+  locationButton.attr('disabled','disabled').text('Sending location...');
+
   navigator.geolocation.getCurrentPosition(function (position){
+    locationButton.removeAttr('disabled').html('<i class="fas  fa-globe"></i>Send location');
     socket.emit('sendMyLocation', {
       latitude: position.coords.latitude,
       longitude: position.coords.longitude
     })
   }, function(){
+    locationButton.removeAttr('disabled').html('<i class="fas  fa-globe"></i>Send location');
     return alert('Unable to featch your location');
   })
 });
