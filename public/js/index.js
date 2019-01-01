@@ -14,6 +14,7 @@ socket.on('newChatMessage', function(message){
   //console.log('New chat message has arrived', message);
   var li = $(`<li class="d-flex justify-content-end mb-4"><div class="msg_cotainer_send">${message.messageText}<span class="msg_time_send">${message.messageCreatedAt}</span></div><div class="img_cont_msg"><img src='${message.messageImage}' /></div></li>`);
   $('#messageList').append(li);
+  scroll();
 });
 
 socket.on('newLocationMessage', function(message){
@@ -27,7 +28,7 @@ socket.on('newLocationMessage', function(message){
     });
       google.maps.event.trigger(map, "resize");
   });
-
+scroll();
 });
 
 
@@ -47,6 +48,7 @@ function sendMessage(){
   else{
     $('#serverMessage').html('No recipient selected');
   };
+  scroll();
 }
 
 function SetTalker(chaterId){
@@ -88,3 +90,9 @@ locationButton.on('click', function(){
     return alert('Unable to featch your location');
   })
 });
+
+function scroll(){
+  var wtf    = $('#messageList');
+  var height = wtf[0].scrollHeight;
+  wtf.scrollTop(height);
+}
