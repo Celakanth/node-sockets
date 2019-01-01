@@ -11,7 +11,7 @@ var generateMessage = (fromid, text) => {
     messageText: text,
     fromChaterId: fromid,
     messageFrom: TheSender,
-    messageCreatedAt: moment().calendar()
+    messageCreatedAt: moment().valueOf()
   };
 };
 
@@ -23,7 +23,7 @@ var generateLocationMessage = (fromId, latitude, longitude) => {
     longitude,
     fromChaterId: fromId,
     messageFrom: TheSender,
-    messageCreatedAt: moment().calendar()
+    messageCreatedAt: moment().valueOf()
   };
 };
 

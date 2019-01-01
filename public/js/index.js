@@ -11,14 +11,16 @@ socket.on('disconnect', function(){
 });
 
 socket.on('newChatMessage', function(message){
+  var formatedTime = moment(message.messageCreatedAt).calendar()
   //console.log('New chat message has arrived', message);
-  var li = $(`<li class="d-flex justify-content-end mb-4"><div class="msg_cotainer_send">${message.messageText}<span class="msg_time_send">${message.messageCreatedAt}</span></div><div class="img_cont_msg"><img src='${message.messageImage}' /></div></li>`);
+  var li = $(`<li class="d-flex justify-content-end mb-4"><div class="msg_cotainer_send">${message.messageText}<span class="msg_time_send">${formatedTime}</span></div><div class="img_cont_msg"><img src='${message.messageImage}' /></div></li>`);
   $('#messageList').append(li);
   scroll();
 });
 
 socket.on('newLocationMessage', function(message){
-  var li = $(`<li class="d-flex justify-content-end mb-4"><div class="msg_cotainer_send"><a id='theTarget' href='/' data-toggle="modal" data-target="#myModal">I am here </a><span class="msg_time_send">${message.messageCreatedAt}</span></div><div class="img_cont_msg"><img src='${message.messageImage}' /></div></li>`);
+  var formatedTime = moment(message.messageCreatedAt).calendar()
+  var li = $(`<li class="d-flex justify-content-end mb-4"><div class="msg_cotainer_send"><a id='theTarget' href='/' data-toggle="modal" data-target="#myModal">I am here </a><span class="msg_time_send">${formatedTime}</span></div><div class="img_cont_msg"><img src='${message.messageImage}' /></div></li>`);
   $('#messageList').append(li);
 
   $('#theTarget').on('click', function () {
