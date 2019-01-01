@@ -174,8 +174,37 @@
 			</div>
 		</div>
 
+    <script id='message-template' type="text/template">
+      <li class="d-flex justify-content-end mb-4">
+        <div class="msg_cotainer_send">
+          {{text}}
+          <span class="msg_time_send">
+            {{time}}
+          </span>
+        </div>
+        <div class="img_cont_msg">
+          <img src="{{image}}" />
+        </div>
+      </li>
+    </script>
+
+    <script id='locationMessage-template' type="text/template">
+      <li class="d-flex justify-content-end mb-4">
+        <div class="msg_cotainer_send">
+          <a id='theTarget' href='/' data-toggle="modal" data-target="#myModal">Here is my location</a>
+          <span class="msg_time_send">
+            ${time}
+          </span>
+        </div>
+        <div class="img_cont_msg">
+          <img src='{{image}}' />
+        </div>
+      </li>
+    </script>
+
   <script src="socket.io/socket.io.js"></script>
   <script src="/js/index.js"></script>
   <script src="https://momentjs.com/downloads/moment.js" type="text/javascript"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.js"></script>
 </body>
 </html>
