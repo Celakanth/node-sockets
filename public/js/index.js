@@ -21,7 +21,6 @@ socket.on('newLocationMessage', function(message){
   $('#messageList').append(li);
 
   $('#theTarget').on('click', function () {
-    alert('Hello');
     var map = new google.maps.Map(document.getElementById("map_div"), {
       center: new google.maps.LatLng(message.latitude,message.longitude),
       zoom:18
