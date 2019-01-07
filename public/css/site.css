@@ -247,6 +247,20 @@ body,html{
   color:#f9bbbb;
   margin: 10px;
 }
+
+.titetext{
+  font-weight: bold;
+  font-size:  26pt;
+  color:  #fff;
+  text-align: center;
+}
+
+.login_center{
+  height: 250px;
+  margin-top: 5%;
+  padding-top: 75px;
+}
+
 @media(max-width: 576px){
   .contacts_card{
     margin-bottom: 15px !important;
