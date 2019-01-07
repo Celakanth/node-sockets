@@ -11,6 +11,7 @@ const express = require('express');
 const socketIO = require('socket.io');
 const moment = require('moment');
 
+const {IsString} = require('./utils/validation.js');
 const {generateMessage, generateLocationMessage} = require('./utils/message');
 
 const port = process.env.PORT || 3000;
@@ -27,9 +28,24 @@ app.use(express.static(publicPath));
 io.on('connection', (socket) => {
   console.log('New connection');
 
-  socket.emit('newChatMessage',generateMessage(10221,'Welcome new user'));
+  socket.on('join', (params, callback) => {
+      if (!IsString(params.username) || !IsString(params.room)) {
+        callback('A username and room name are required');
+      }
 
-  socket.broadcast.emit('newChatMessage',generateMessage(10220,'New user has joind the message'));
+      socket.join(params.room);
+
+      //leave a room socket.leave(params.room);
+      //emiting to rooms.
+      //io.emit -> io.to(params.room).emit();
+      //socket.braudcast.emit -> socket.braudcast.to(params.room).emit();
+      socket.emit('newChatMessage',generateMessage(10221,'Welcome new user'));
+      socket.broadcast.to(params.room).emit('newChatMessage',generateMessage(10220,`${params.username} has joined the room`));
+
+
+      callback();
+  });
+
 
   //Disconnected from server -on = event, -socket is the io socket object
 

@@ -19,6 +19,7 @@
     <link rel=icon href=/chat.png>
 </head>
 <body>
+    <input type="button" id='errorDisplay' href='/chat.html' data-toggle="modal" data-target="#errModle"></input>
     <input type="hidden" id="chatterId"/>
     <!-- Modal -->
     <div id="myModal" class="modal fade" role="dialog">
@@ -38,6 +39,29 @@
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Error Modal -->
+    <div id="errModle" class="modal fade" role="dialog" style="height:200px;">
+      <div class="modal-dialog" >
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Error Message</h4>
+            <!--<button type="button" class="close" style="padding:10px;" data-dismiss="modal">&times;</button>-->
+          </div>
+          <div style="height:500px;">
+            <div id='errorMessage' class="modal-body">
+
+            </div>
+          </div>
+          <!--<div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>-->
         </div>
 
       </div>
@@ -204,6 +228,7 @@
 
   <script src="socket.io/socket.io.js"></script>
   <script src="/js/chat.js"></script>
+  <script src="/js/deparam.js"></script>
   <script src="https://momentjs.com/downloads/moment.js" type="text/javascript"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.js"></script>
 </body>

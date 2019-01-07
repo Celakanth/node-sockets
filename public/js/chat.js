@@ -1,8 +1,20 @@
 var socket = io();
 
 socket.on('connect', function(){
-  console.log('connect to server');
-  $('#serverMessage').html('Your messanger is connected');
+  var params = $.deparam(window.location.search);
+
+  socket.emit('join', params, function(err){
+    if (err) {
+      $('#errorMessage').html(err);
+      $('#errorDisplay').click();
+     setTimeout(function(){ window.location = "/";}, 3000);
+    }
+    else {
+      $('#serverMessage').html('Your messanger is connected');
+      return;
+    }
+  });
+  
 });
 
 socket.on('disconnect', function(){
