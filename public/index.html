@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Celakanth - chat</title>
+    <title>Login</title>
     <!-- This file has been downloaded from Bootsnipp.com. Enjoy! -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
     <link type="text/css" href="/css/site.css" rel="stylesheet"/>
     <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -15,7 +15,6 @@
 		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVl46TxYm5kAqL9nbNEwlUKN--9hIvqL4&sensor=false" type="text/javascript"></script>
-
     <link rel=icon href=/chat.png>
 </head>
 <body>
@@ -26,11 +25,11 @@
           <!-- Current chat header -->
           <div class="card-header msg_head">
             <div class="titetext">
-                Chat Login
+                Join a chat
             </div>
             </div>
-            <form id='login' method="post">
-          <div class="card-body msg_card_body" id="messageList">
+          <form id='login' action="/chat.html">
+              <div class="card-body msg_card_body" id="messageList">
             <div class="row">
               <div class="col-xl-3">
 
@@ -39,46 +38,28 @@
                 <!--login div-->
                 <div class="row">
                   <div class="col-md-3" style="color:#fff;">
-                    User name
+                    Display name
                   </div>
                   <div class="col-md-9">
-                    <input type="text" style="width:100%" id='username' placeholder="user name" />
+                    <input type="text" autofocus="" style="width:100%" id='username' name="username" placeholder="Display name" />
                   </div>
                 </div>
                 <div class="row" style="margin-top:10px;">
                   <div class="col-md-3" style='color:#fff;'>
-                    Password
+                    Room
                   </div>
                   <div class="col-md-9">
-                    <input type="password" style="width:100%" id='passwords' placeholder="Password" />
+                    <input type="password" style="width:100%" id='room' name="room" placeholder="Room" />
                   </div>
                 </div>
                 <div class="row" style="margin-top:10px; padding-left:15px;">
-                  <button type="button" name="button">Login</button>
+                  <button>Login</button>
                 </div>
               </div>
-              </form>
-
-              <div class="col-xl-3">
-
-              </div>
-              </div>
-          </div>
-          <!--<form id='message-form'>
-            <div class="card-footer">
-              <div class="input-group">
-                <div class="input-group-append">
-                  <span class="input-group-text attach_btn"><i class="fas fa-paperclip"></i></span>
-                </div>
-                <textarea name="" id="message" class="form-control type_msg" placeholder="Type your message..."></textarea>
-                <div class="input-group-append">
-                  <button class="input-group-text send_btn"><i class="fas fa-location-arrow"></i></button>
-                </div>
-              </div>
-              <div class="MessageBlock" id='serverMessage'></div>
+              <div class="col-xl-3"></div>
             </div>
+          </div>
         </form>
-        <button id="send-location" class="sendloc"><i class="fas  fa-globe"></i>Send Location</button>-->
       </div>
     </div>
   </div>
