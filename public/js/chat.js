@@ -10,16 +10,27 @@ socket.on('connect', function(){
      setTimeout(function(){ window.location = "/";}, 3000);
     }
     else {
+
       $('#serverMessage').html('Your messanger is connected');
       return;
     }
   });
-  
+
 });
 
 socket.on('disconnect', function(){
   console.log('Disconnected from server');
   $('#serverMessage').html('Your messanger is disconnect');
+});
+
+socket.on('loadUser', function(userList){
+  userList.forEach(function(user){
+    var template = $('#userListItem-template').html();
+    var html = Mustache.render(template,{
+      name: user
+    });
+    $('#userList').html(html);
+  });
 });
 
 socket.on('newChatMessage', function(message){

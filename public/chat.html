@@ -226,6 +226,21 @@
       </li>
     </script>
 
+    <script id='userListItem-template' type="text/template">
+      <li id='name' onclick='SetTalker(this.id)'>
+        <div class="d-flex bd-highlight">
+          <div class="img_cont">
+            <img src='#' class="rounded-circle user_img">
+            <span class="online_icon"></span>
+          </div>
+          <div class="user_info">
+            <span>{{name}}</span>
+            <p>{{name}} is online</p>
+          </div>
+        </div>
+      </li>
+    </script>
+
   <script src="socket.io/socket.io.js"></script>
   <script src="/js/chat.js"></script>
   <script src="/js/deparam.js"></script>
