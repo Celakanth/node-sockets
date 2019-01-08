@@ -70,7 +70,8 @@ io.on('connection', (socket) => {
   //Custom client listener from the socket
   socket.on('createMessage', (newMessage, callback) => {
       //send to all online.
-      io.emit('newChatMessage', generateMessage(newMessage.SendToId, newMessage.messageText));
+      var user = users.getUser(socket.id);
+      io.to(user.room).emit('newChatMessage', generateMessage(user.name,newMessage.SendToId, newMessage.messageText));
       callback('Your message has been received');
       /*socket.emit('function'{object})
         sends just to me!!
@@ -84,7 +85,8 @@ io.on('connection', (socket) => {
   });
 
   socket.on('sendMyLocation', (location, callback) => {
-    io.emit('newLocationMessage', generateLocationMessage(102201, location.latitude, location.longitude));
+    var theUser = users.getUser(socket.id);
+    io.to(theUser.room).emit('newLocationMessage', generateLocationMessage(theUser.name, location.latitude, location.longitude));
   });
 
   socket.on('getUsers', (room, callback) => {

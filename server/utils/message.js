@@ -4,25 +4,23 @@
 */
 const moment = require('moment');
 
-var generateMessage = (fromid, text) => {
-  var TheSender = 'Christian';
+var generateMessage = (theSender, fromid, text) => {
   return {
     messageImage: 'New_User_Image',
     messageText: text,
     fromChaterId: fromid,
-    messageFrom: TheSender,
+    messageFrom: theSender,
     messageCreatedAt: moment().valueOf()
   };
 };
 
-var generateLocationMessage = (fromId, latitude, longitude) => {
-  var TheSender = 'Christian';
+var generateLocationMessage = (theSender, fromId, latitude, longitude) => {
   return {
     messageImage: 'New_user_image',
     latitude,
     longitude,
     fromChaterId: fromId,
-    messageFrom: TheSender,
+    messageFrom: theSender,
     messageCreatedAt: moment().valueOf()
   };
 };
