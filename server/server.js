@@ -49,8 +49,6 @@ io.on('connection', (socket) => {
       else{
         callback('Users name has been taken');
       }
-
-
       socket.emit('newChatMessage',generateMessage(10221,'Welcome new user'));
       socket.broadcast.to(params.room).emit('newChatMessage',generateMessage(10221,`${params.username} has joined the room`));
       io.to(params.room).emit('loadUser', users.getUserList(params.room));
